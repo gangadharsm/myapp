@@ -1,13 +1,4 @@
 <div>
-  <button routerLink="/auth/">Login</button>
+  <button routerLink="/auth">Login</button>
 </div>
-<!-- <div>
-  <button routerLink="/dashboard">Dashboard</button>
-</div> -->
-
-<a
-  routerLink="/dashboard"
-  class="nav-link"
-  (mouseover)="preloadBundle('')"
-  >heroes</a
->
+<a [routerLink]="['/dashboard']" routerLinkActive="router-link-active"  (mouseover)="preloadBundle('')">heroes</a>

@@ -8,7 +8,7 @@ import { OnDemandPreloadService } from 'src/app/services/on-demand-preload-servi
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private preloadOnDemandService : OnDemandPreloadService) { }
+  constructor(private preloadOnDemandService: OnDemandPreloadService) { }
 
   ngOnInit() {
   }

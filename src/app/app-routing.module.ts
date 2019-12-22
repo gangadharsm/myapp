@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { OptInPreloadStrategyService } from './loading-strategies/opt-in-preload-strategy.service';
 import { OnDemandPreloadStrategy } from './loading-strategies/on-demand-preload-strategy.service';
-import { AuthGuardGuard } from './app-security/auth-guard.guard';
+import { AuthGuardGuard } from './app-security/angular-guards/auth-guard.guard';
 
 const routes: Routes = [
   {

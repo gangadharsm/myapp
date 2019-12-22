@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { OptInPreloadStrategyService } from './loading-strategies/opt-in-preload-strategy.service';
 import { OnDemandPreloadStrategy } from './loading-strategies/on-demand-preload-strategy.service';
+import { AuthGuardGuard } from './app-security/auth-guard.guard';
 
 const routes: Routes = [
   {
@@ -16,6 +17,7 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./models/dashboard/dashboard.module').then(m => m.DashboardModule),
+    canActivate: [AuthGuardGuard],
     data: { preload: true}
   }
 ];

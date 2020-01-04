@@ -1,13 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderFooterModule } from './headerfooter/header-footer.module';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './app-security/angular-interceptors/jwt.interceptor';
 import { ErrorInterceptor } from './app-security/angular-interceptors/error.interceptor';
+import { AngularMaterialModule } from './angular-material/angular-material.module';
 
 @NgModule({
   declarations: [
@@ -15,8 +15,10 @@ import { ErrorInterceptor } from './app-security/angular-interceptors/error.inte
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     HeaderFooterModule,
+    AngularMaterialModule,
     BrowserAnimationsModule,
   ],
   providers: [

@@ -1,9 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
 const AngularMaterial = [
-  MatProgressBarModule
- ];
+  MatProgressBarModule,
+  MatToolbarModule,
+  MatButtonModule
+];
 
 @NgModule({
   declarations: [],
@@ -11,6 +15,6 @@ const AngularMaterial = [
     CommonModule,
     AngularMaterial
   ],
-  exports : AngularMaterial
+  exports: AngularMaterial
 })
 export class AngularMaterialModule { }

@@ -1,4 +1,13 @@
-<div>
-  <button routerLink="/auth">Login</button>
-</div>
-<a [routerLink]="['/dashboard']" routerLinkActive="router-link-active"  (mouseover)="preloadBundle('')">heroes</a>
+<mat-toolbar>
+  School
+  <nav style="margin-left: auto">
+    <a mat-button routerLink="/auth">Login</a>
+    <a
+      mat-button
+      [routerLink]="['/dashboard']"
+      routerLinkActive="active"
+      (mouseover)="preloadBundle('')"
+      >Dashboard</a
+    >
+  </nav>
+</mat-toolbar>

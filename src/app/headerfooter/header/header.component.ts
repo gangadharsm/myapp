@@ -7,6 +7,16 @@ import { OnDemandPreloadService } from 'src/app/services/on-demand-preload-servi
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  routerArray = [
+    {
+      name: 'Login',
+      routerLink: '/auth'
+    },
+    {
+      name: 'Dashboard',
+      routerLink: '/dashboard'
+    },
+  ];
 
   constructor(private preloadOnDemandService: OnDemandPreloadService) { }
 

@@ -1,13 +1,13 @@
 <mat-toolbar>
   School
   <nav style="margin-left: auto">
-    <a mat-button routerLink="/auth">Login</a>
     <a
+      *ngFor="let router of routerArray"
       mat-button
-      [routerLink]="['/dashboard']"
+      routerLink="{{ router.routerLink }}"
       routerLinkActive="active"
       (mouseover)="preloadBundle('')"
-      >Dashboard</a
+      >{{ router.name }}</a
     >
   </nav>
 </mat-toolbar>

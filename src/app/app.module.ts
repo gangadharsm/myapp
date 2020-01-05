@@ -8,6 +8,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './app-security/angular-interceptors/jwt.interceptor';
 import { ErrorInterceptor } from './app-security/angular-interceptors/error.interceptor';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,7 @@ import { AngularMaterialModule } from './angular-material/angular-material.modul
     HeaderFooterModule,
     AngularMaterialModule,
     BrowserAnimationsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

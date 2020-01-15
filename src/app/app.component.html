@@ -1,3 +1,6 @@
+
+<button mat-raised-button color="accent" *ngIf="isProduction" (click)="addToHomeScreen()">Add to home screen</button>
+
 <app-header></app-header>
 <mat-progress-bar *ngIf="loading" color="accent" mode="indeterminate">
 </mat-progress-bar>

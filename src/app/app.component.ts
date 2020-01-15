@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { UserAuthService } from './services/authService/user-auth.service';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Event, Router, NavigationStart, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
+import { environment } from './../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,12 @@ import { Event, Router, NavigationStart, NavigationEnd, NavigationCancel, Naviga
 export class AppComponent {
   title = 'myapp';
   loading = false;
-  constructor(private router: Router) {
+  deferredPrompt: any;
+  showButton = false;
+  isProduction = environment.production;
+  constructor(
+    private router: Router
+  ) {
     this.router.events.subscribe((event: Event) => {
       switch (true) {
         case event instanceof NavigationStart: {
@@ -29,10 +34,31 @@ export class AppComponent {
       }
     });
   }
-}
-  // constructor(private userAuthService: UserAuthService) {
-  //   this.userAuthService.getUser().subscribe(res => {
-  //     console.log(res);
-  //   });
-  // }
 
+  @HostListener('window:beforeinstallprompt', ['$event'])
+  onbeforeinstallprompt(e) {
+    console.log(e);
+    // Prevent Chrome 67 and earlier from automatically showing the prompt
+    e.preventDefault();
+    // Stash the event so it can be triggered later.
+    this.deferredPrompt = e;
+    this.showButton = true;
+  }
+
+  addToHomeScreen() {
+    // hide our user interface that shows our A2HS button
+    this.showButton = false;
+    // Show the prompt
+    this.deferredPrompt.prompt();
+    // Wait for the user to respond to the prompt
+    this.deferredPrompt.userChoice
+      .then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the A2HS prompt');
+        } else {
+          console.log('User dismissed the A2HS prompt');
+        }
+        this.deferredPrompt = null;
+      });
+  }
+}

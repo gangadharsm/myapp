@@ -13,11 +13,11 @@ const routes: Routes = [
   },
   {
     path: 'auth',
-    loadChildren: () => import('./models/auth/auth.module').then(m => m.AuthModule)
+    loadChildren: () => import('./app-modules/auth/auth.module').then(m => m.AuthModule)
   },
   {
     path: '',
-    loadChildren: () => import('./models/dashboard/dashboard.module').then(m => m.DashboardModule),
+    loadChildren: () => import('./app-modules/dashboard/dashboard.module').then(m => m.DashboardModule),
     canActivate: [AuthGuard],
     data: { preload: true}
   }
